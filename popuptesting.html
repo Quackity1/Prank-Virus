@@ -58,6 +58,12 @@
             `;
             popupWindow.document.write(popupContent);
             popupWindows.push({ window: popupWindow, directionX: getRandomDirection(), directionY: getRandomDirection() });
+            popupWindow.onunload = function() {
+                // Remove the closed popup from the array
+                popupWindows = popupWindows.filter(popup => popup.window !== popupWindow);
+                // Open a new popup to replace the closed one
+                openPopupWithImageAndMove();
+            };
         }
 
         function getRandomDirection() {
