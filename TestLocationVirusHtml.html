@@ -1,59 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locked Computer</title>
     <style>
         body {
-            background-color: red; /* Change background color to red */
-            text-align: center; /* Center align text */
-            color: black; /* Change text color to black */
+            background-color: red;
+            text-align: center;
+            color: black;
         }
         img {
-            width: 18%; /* Set image width */
-            display: block; /* Center align image */
-            margin: 0 auto; /* Center align image */
-        }
-        #location-info {
-            margin-top: 20px;
-        }
-        #location-info hr {
-            border: none;
-            height: 2px;
-            background-color: #ff0000;
-        }
-        #location-info p {
-            margin: 0.5em 0;
-        }
-        #location-info strong {
-            color: #ff0000;
-        }
-        #location-info span {
-            color: #ff0000;
+            width: 18%;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="ussr-anthem-short2.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
     <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
     <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
     <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
     <button onclick="startPopups()">Click Me</button>
-    <div id="location-info">
-        <h2>Hi! Here's Your Exact Location, Get Screwed:</h2>
-        <hr>
-        <p><strong>IP Address:</strong> <span id="ip_address"></span></p>
-        <p><strong>Country:</strong> <span id="country_name"></span></p>
-        <p><strong>Region:</strong> <span id="region_name"></span></p>
-        <p><strong>City:</strong> <span id="city_name"></span></p>
-        <p><strong>Latitude:</strong> <span id="latitude"></span></p>
-        <p><strong>Longitude:</strong> <span id="longitude"></span></p>
-        <p><strong>Postal Code:</strong> <span id="postal_code"></span></p>
-        <p><strong>Timezone:</strong> <span id="timezone"></span></p>
-        <p><strong>ISP:</strong> <span id="isp"></span></p>
-        <hr>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         var popupWindows = [];
 
@@ -72,34 +41,23 @@
             const left = Math.floor(Math.random() * (screenWidth - popupWidth));
             const top = Math.floor(Math.random() * (screenHeight - popupHeight));
             const popupWindow = window.open("", "", "width=400,height=400,left=" + left + ",top=" + top);
-            const imageUrl = "https://i.ytimg.com/vi/-EOm7D40ZqY/maxresdefault.jpg"; // Direct image URL
             const popupContent = `
                 <!DOCTYPE html>
                 <html>
                 <head>
                     <title>Popup Window</title>
                     <style>
-                        body {
-                            background-color: #f0f0f0;
-                            margin: 0;
-                            padding: 20px;
-                        }
-                        img {
-                            max-width: 100%;
-                            height: auto;
-                            display: block;
-                            margin: 0 auto;
-                        }
+                        body { margin: 0; padding: 20px; background-color: #f0f0f0; }
+                        img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
                     </style>
                 </head>
                 <body>
-                    <img src="${imageUrl}" alt="Popup Image">
+                    <img src="https://i.ytimg.com/vi/-EOm7D40ZqY/maxresdefault.jpg" alt="Popup Image">
                 </body>
                 </html>
             `;
             popupWindow.document.write(popupContent);
             popupWindows.push(popupWindow);
-            hideMouseCursor();
         }
 
         function movePopups() {
@@ -111,25 +69,6 @@
                 popupWindow.moveTo(newX, newY);
             });
         }
-
-        function hideMouseCursor() {
-            document.body.style.cursor = 'none'; // Hide the mouse cursor
-        }
-
-        // Fetch location information
-        $(document).ready(function() {
-            $.getJSON("https://ipapi.co/json/", function(data) {
-                $("#ip_address").text(data.ip);
-                $("#country_name").text(data.country_name);
-                $("#region_name").text(data.region);
-                $("#city_name").text(data.city);
-                $("#latitude").text(data.latitude);
-                $("#longitude").text(data.longitude);
-                $("#postal_code").text(data.postal);
-                $("#timezone").text(data.timezone);
-                $("#isp").text(data.org);
-            });
-        });
     </script>
 </body>
 </html>
