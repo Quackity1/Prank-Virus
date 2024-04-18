@@ -27,10 +27,10 @@
         var popupWindows = [];
 
         function startPopups() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 10; i++) {
                 openPopupWithImageAndMove();
             }
-            setInterval(movePopups, 100); // Move the popups every 100 milliseconds
+            setInterval(movePopups, 50); // Move the popups every 50 milliseconds
         }
 
         function openPopupWithImageAndMove() {
@@ -62,8 +62,8 @@
 
         function movePopups() {
             popupWindows.forEach(function(popup) {
-                const moveX = popup.directionX * 450; // Move 5 pixels horizontally
-                const moveY = popup.directionY * 450; // Move 5 pixels vertically
+                const moveX = popup.directionX * 10; // Move 10 pixels horizontally
+                const moveY = popup.directionY * 10; // Move 10 pixels vertically
                 const newX = popup.window.screenX + moveX;
                 const newY = popup.window.screenY + moveY;
 
