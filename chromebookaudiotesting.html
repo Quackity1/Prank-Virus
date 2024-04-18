@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: red;
+            text-align: center;
+            color: black;
+        }
+        img {
+            width: 18%;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="https://www.marxists.org/history/ussr/sounds/mp3/soviet-anthem.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
+    <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
+    <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
+    <button onclick="startPopups()">Unlock Computer</button>
+    <script>
+        var popupWindows = [];
+        var audio = new Audio('https://www.marxists.org/history/ussr/sounds/mp3/soviet-anthem.mp3');
+
+        function startPopups() {
+            playAudio(); // Start playing audio when unlocking computer
+            for (let i = 0; i < 30; i++) {
+                openPopupWithImageAndMove();
+            }
+            setInterval(movePopups, 100); // Move the popups every 100 milliseconds
+        }
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function openPopupWithImageAndMove() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const popupWidth = 400;
+            const popupHeight = 400;
+            const left = Math.floor(Math.random() * (screenWidth - popupWidth));
+            const top = Math.floor(Math.random() * (screenHeight - popupHeight));
+            const popupWindow = window.open("", "", "width=400,height=400,left=" + left + ",top=" + top);
+            const popupContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Popup Window</title>
+                    <style>
+                        body { margin: 0; padding: 20px; background-color: #f0f0f0; }
+                        img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+                    </style>
+                </head>
+                <body>
+                    <img src="https://i.ytimg.com/vi/-EOm7D40ZqY/maxresdefault.jpg" alt="Popup Image">
+                </body>
+                </html>
+            `;
+            popupWindow.document.write(popupContent);
+            popupWindows.push(popupWindow);
+        }
+
+        function movePopups() {
+            popupWindows.forEach(function(popupWindow) {
+                const moveX = Math.floor(Math.random() * 11) - 5; // Random movement in X direction (-5 to 5 pixels)
+                const moveY = Math.floor(Math.random() * 11) - 5; // Random movement in Y direction (-5 to 5 pixels)
+                const newX = popupWindow.screenX + moveX;
+                const newY = popupWindow.screenY + moveY;
+                popupWindow.moveTo(newX, newY);
+            });
+        }
+    </script>
+</body>
+</html>
