@@ -40,8 +40,8 @@
         }
 
         function openPopupWithImageAndMove() {
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
+            const screenWidth = window.screen.availWidth;
+            const screenHeight = window.screen.availHeight;
             const popupWidth = 400;
             const popupHeight = 400;
             const left = Math.floor(Math.random() * (screenWidth - popupWidth));
