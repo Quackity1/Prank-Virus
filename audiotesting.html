@@ -1,3 +1,4 @@
+User
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,10 @@
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="ussr-anthem-short1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
     <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
     <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
     <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
@@ -23,17 +28,10 @@
         var popupWindows = [];
 
         function startPopups() {
-            playAudio();
             for (let i = 0; i < 30; i++) {
                 openPopupWithImageAndMove();
             }
             setInterval(movePopups, 100); // Move the popups every 100 milliseconds
-        }
-
-        function playAudio() {
-            const audio = new Audio('ussr-anthem-short1.mp3');
-            audio.loop = true;
-            audio.play();
         }
 
         function openPopupWithImageAndMove() {
@@ -55,10 +53,6 @@
                     </style>
                 </head>
                 <body>
-                    <audio autoplay loop>
-                        <source src="ussr-anthem-short1.mp3" type="audio/mp3">
-                        Your browser does not support the audio element.
-                    </audio>
                     <img src="https://i.ytimg.com/vi/-EOm7D40ZqY/maxresdefault.jpg" alt="Popup Image">
                 </body>
                 </html>
@@ -79,3 +73,4 @@
     </script>
 </body>
 </html>
+
