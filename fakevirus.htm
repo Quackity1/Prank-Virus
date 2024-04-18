@@ -27,8 +27,8 @@
         }
 
         function openPopup() {
-            const screenWidth = window.screen.availWidth;
-            const screenHeight = window.screen.availHeight;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
             const popupWidth = 200;
             const popupHeight = 200;
             const left = Math.floor(Math.random() * (screenWidth - popupWidth));
