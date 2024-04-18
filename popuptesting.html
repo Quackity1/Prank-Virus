@@ -57,7 +57,11 @@
                 </html>
             `;
             popupWindow.document.write(popupContent);
-            popupWindows.push({ window: popupWindow, directionX: 1, directionY: 1 });
+            popupWindows.push({ window: popupWindow, directionX: getRandomDirection(), directionY: getRandomDirection() });
+        }
+
+        function getRandomDirection() {
+            return Math.random() < 0.5 ? -1 : 1; // Randomly choose either -1 or 1
         }
 
         function movePopups() {
