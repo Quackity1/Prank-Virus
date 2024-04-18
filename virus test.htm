@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: red; /* Change background color to red */
+            text-align: center; /* Center align text */
+            color: black; /* Change text color to black */
+        }
+        img {
+            width: 18%; /* Set image width */
+            display: block; /* Center align image */
+            margin: 0 auto; /* Center align image */
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
+    <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
+    <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
+    <button onclick="openPopupWithImage()">Open Popup</button>
+    <script>
+        function openPopupWithImage() {
+            // Create a new popup window
+            var popupWindow = window.open("", "", "width=400,height=400");
+
+            // Create the content for the popup window
+            var popupContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Popup Window</title>
+                    <style>
+                        body {
+                            background-color: #f0f0f0;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                            display: block;
+                            margin: 0 auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <img src="https://i.pinimg.com/736x/12/fd/3e/12fd3e80ff3db2323e9d03c43d6c17e2.jpg" alt="Popup Image">
+                </body>
+                </html>
+            `;
+
+            // Write the content to the popup window
+            popupWindow.document.write(popupContent);
+
+            // Prevent the popup window from navigating away
+            popupWindow.document.close();
+        }
+    </script>
+</body>
+</html>
