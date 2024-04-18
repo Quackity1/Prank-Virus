@@ -20,10 +20,13 @@
     <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
     <button onclick="startPopups()">Click Me</button>
     <script>
-        var popupInterval;
+        var popupWindows = [];
 
         function startPopups() {
-            popupInterval = setInterval(openPopup, 1000); // Open a new popup every second
+            for (let i = 0; i < 20; i++) {
+                openPopup();
+            }
+            setInterval(movePopups, 100); // Move the popups every 100 milliseconds
         }
 
         function openPopup() {
@@ -33,8 +36,19 @@
             const popupHeight = 200;
             const left = Math.floor(Math.random() * (screenWidth - popupWidth));
             const top = Math.floor(Math.random() * (screenHeight - popupHeight));
-            const myWindow = window.open("", "", "width=200,height=200,left=" + left + ",top=" + top);
-            myWindow.document.write("<img src='https://media.tenor.com/images/45b3064b20b3a6c51e5464aa82ebcd6e/tenor.gif' alt=''>");
+            const popupWindow = window.open("", "", "width=200,height=200,left=" + left + ",top=" + top);
+            popupWindow.document.write("<img src='https://media.tenor.com/images/45b3064b20b3a6c51e5464aa82ebcd6e/tenor.gif' alt=''>");
+            popupWindows.push(popupWindow);
+        }
+
+        function movePopups() {
+            popupWindows.forEach(function(popupWindow) {
+                const moveX = Math.floor(Math.random() * 11) - 5; // Random movement in X direction (-5 to 5 pixels)
+                const moveY = Math.floor(Math.random() * 11) - 5; // Random movement in Y direction (-5 to 5 pixels)
+                const newX = popupWindow.screenX + moveX;
+                const newY = popupWindow.screenY + moveY;
+                popupWindow.moveTo(newX, newY);
+            });
         }
 
         // Function to request fullscreen
