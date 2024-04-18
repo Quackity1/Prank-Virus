@@ -24,6 +24,24 @@
             myWindow=window.open("","","width=200,height=100");
             myWindow.document.write("<p>LOL GET TROLLED</p>");
         }
+
+        // Function to request fullscreen
+        function requestFullscreen(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }
+
+        // Automatically request fullscreen when the page loads
+        window.onload = function() {
+            requestFullscreen(document.documentElement);
+        };
     </script>
 </body>
 </html>
