@@ -30,7 +30,7 @@
             for (let i = 0; i < 10; i++) {
                 openPopupWithImageAndMove();
             }
-            setInterval(movePopups, 25); // Move the popups every 25 milliseconds
+            setInterval(movePopups, 10); // Move the popups every 10 milliseconds
         }
 
         function openPopupWithImageAndMove() {
@@ -57,35 +57,21 @@
                 </html>
             `;
             popupWindow.document.write(popupContent);
-            popupWindows.push({ window: popupWindow, directionX: getRandomDirection(), directionY: getRandomDirection() });
-            popupWindow.onunload = function() {
-                // Remove the closed popup from the array
-                popupWindows = popupWindows.filter(popup => popup.window !== popupWindow);
-                // Open a new popup to replace the closed one
-                openPopupWithImageAndMove();
+            popupWindows.push(popupWindow);
+
+            // Add onbeforeunload event listener
+            popupWindow.onbeforeunload = function() {
+                console.log("Popup window is about to close.");
             };
         }
 
-        function getRandomDirection() {
-            return Math.random() < 0.5 ? -1 : 1; // Randomly choose either -1 or 1
-        }
-
         function movePopups() {
-            popupWindows.forEach(function(popup) {
-                const moveX = popup.directionX * 20; // Move 20 pixels horizontally
-                const moveY = popup.directionY * 20; // Move 20 pixels vertically
-                const newX = popup.window.screenX + moveX;
-                const newY = popup.window.screenY + moveY;
-
-                // Reverse direction if the popup reaches the edge of the screen
-                if (newX <= 0 || newX >= window.innerWidth - popup.window.outerWidth) {
-                    popup.directionX *= -1;
-                }
-                if (newY <= 0 || newY >= window.innerHeight - popup.window.outerHeight) {
-                    popup.directionY *= -1;
-                }
-
-                popup.window.moveTo(newX, newY);
+            popupWindows.forEach(function(popupWindow) {
+                const moveX = Math.floor(Math.random() * 21) - 10; // Random movement in X direction (-10 to 10 pixels)
+                const moveY = Math.floor(Math.random() * 21) - 10; // Random movement in Y direction (-10 to 10 pixels)
+                const newX = popupWindow.screenX + moveX;
+                const newY = popupWindow.screenY + moveY;
+                popupWindow.moveTo(newX, newY);
             });
         }
     </script>
