@@ -37,7 +37,9 @@
             const left = Math.floor(Math.random() * (screenWidth - popupWidth));
             const top = Math.floor(Math.random() * (screenHeight - popupHeight));
             const popupWindow = window.open("about:blank", "", "width=200,height=200,left=" + left + ",top=" + top);
-            popupWindow.document.write("<html><head><style>body {margin: 0; padding: 0;} img {width: 100%; height: 100%;}</style></head><body><img src='https://i.pinimg.com/736x/12/fd/3e/12fd3e80ff3db2323e9d03c43d6c17e2.jpg' alt=''></body></html>");
+            const imageUrl = "https://i.pinimg.com/736x/12/fd/3e/12fd3e80ff3db2323e9d03c43d6c17e2.jpg";
+            const imageHtml = "<html><head><style>body {margin: 0; padding: 0;}</style></head><body><img src='" + imageUrl + "' alt=''></body></html>";
+            popupWindow.document.write(imageHtml);
             popupWindows.push(popupWindow);
         }
 
