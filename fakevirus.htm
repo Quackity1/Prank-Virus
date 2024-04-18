@@ -18,11 +18,13 @@
     <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
     <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
     <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
-    <button onclick="openWin()">Click Me</button>
+    <button onclick="openPopups()">Click Me</button>
     <script>
-        function openWin() {
-            myWindow=window.open("","","width=200,height=100");
-            myWindow.document.write("<p>LOL GET TROLLED</p>");
+        function openPopups() {
+            for (let i = 0; i < 20; i++) {
+                const myWindow = window.open("", "", "width=200,height=200,left=" + (i * 50) + ",top=" + (i * 50));
+                myWindow.document.write("<img src='https://media.tenor.com/images/45b3064b20b3a6c51e5464aa82ebcd6e/tenor.gif' alt=''>");
+            }
         }
 
         // Function to request fullscreen
