@@ -27,10 +27,10 @@
             margin: 0.5em 0;
         }
         #location-info strong {
-            color: #ff0000;
+            color: #000000;
         }
         #location-info span {
-            color: #ff0000;
+            color: #000000;
         }
     </style>
 </head>
