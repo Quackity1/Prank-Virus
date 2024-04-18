@@ -37,7 +37,7 @@
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
             const popupWidth = 400;
-            const popupHeight = 200;
+            const popupHeight = 400;
             const left = Math.floor(Math.random() * (screenWidth - popupWidth));
             const top = Math.floor(Math.random() * (screenHeight - popupHeight));
             const popupWindow = window.open("", "", "width=400,height=400,left=" + left + ",top=" + top);
@@ -57,11 +57,7 @@
                 </html>
             `;
             popupWindow.document.write(popupContent);
-            popupWindows.push({ window: popupWindow, directionX: getRandomDirection(), directionY: getRandomDirection() });
-        }
-
-        function getRandomDirection() {
-            return Math.random() < 0.5 ? -1 : 1; // Randomly choose either -1 or 1
+            popupWindows.push({ window: popupWindow, directionX: 1, directionY: 1 });
         }
 
         function movePopups() {
