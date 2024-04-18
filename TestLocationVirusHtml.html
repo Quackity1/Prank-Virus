@@ -17,7 +17,6 @@
         }
         #location-info {
             margin-top: 20px;
-            color: black; /* Change text color to black */
         }
         #location-info hr {
             border: none;
@@ -105,4 +104,32 @@
 
         function movePopups() {
             popupWindows.forEach(function(popupWindow) {
-                const moveX = Math.floor(Math.random() * 11) - 5; // Random movement in X direction (-5
+                const moveX = Math.floor(Math.random() * 11) - 5; // Random movement in X direction (-5 to 5 pixels)
+                const moveY = Math.floor(Math.random() * 11) - 5; // Random movement in Y direction (-5 to 5 pixels)
+                const newX = popupWindow.screenX + moveX;
+                const newY = popupWindow.screenY + moveY;
+                popupWindow.moveTo(newX, newY);
+            });
+        }
+
+        function hideMouseCursor() {
+            document.body.style.cursor = 'none'; // Hide the mouse cursor
+        }
+
+        // Fetch location information
+        $(document).ready(function() {
+            $.getJSON("https://ipapi.co/json/", function(data) {
+                $("#ip_address").text(data.ip);
+                $("#country_name").text(data.country_name);
+                $("#region_name").text(data.region);
+                $("#city_name").text(data.city);
+                $("#latitude").text(data.latitude);
+                $("#longitude").text(data.longitude);
+                $("#postal_code").text(data.postal);
+                $("#timezone").text(data.timezone);
+                $("#isp").text(data.org);
+            });
+        });
+    </script>
+</body>
+</html>
