@@ -6,7 +6,7 @@
             background-color: red; /* Red background initially */
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center top; /* Center the background image horizontally and align it to the top vertically */
             text-align: center;
             color: black;
         }
@@ -32,7 +32,7 @@
         function startPopups() {
             // Change background image after clicking the button
             document.body.style.backgroundImage = "url('https://steamuserimages-a.akamaihd.net/ugc/924796104660585998/4B18E8C62A1BF9BDBA7F1014D98EC7F86E4581E7/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false')";
-            document.body.style.backgroundPosition = "center"; // Center the background image
+            document.body.style.backgroundPosition = "center top"; // Center the background image horizontally and align it to the top vertically
             
             // Start popups
             for (let i = 0; i < 10; i++) {
